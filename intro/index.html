@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Promotions / Verification Information</title>
+  <title>促销活动 / 核验信息</title>
   <style>
     :root{
       --primary:#0a4bff;
@@ -149,7 +149,7 @@
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
         <path d="M12 2l2.39 4.84 5.34.78-3.86 3.76.91 5.32L12 14.77 6.22 16.7l.91-5.32L3.27 7.62l5.34-.78L12 2z" fill="#0a4bff"/>
       </svg>
-      Nova Shop
+      NOVA Travel
     </div>
   </header>
 
@@ -158,11 +158,11 @@
       <div class="tabs">
         <label class="tab active">
           <input type="radio" name="mode" checked/>
-          Promotional Activity / Verification Information
+          促销活动 / 核验信息
         </label>
         <label class="tab">
           <input type="radio" name="mode" disabled/>
-          View My Discount
+          查看我的优惠
         </label>
       </div>
 
@@ -170,43 +170,43 @@
         <form id="promo-form" autocomplete="off" novalidate>
           <div class="form-group">
             <label class="required">Last Name</label>
-            <input type="text" name="lastName" placeholder="Enter your last name" required />
+            <input type="text" name="lastName" placeholder="请输入护照或证件上的姓氏，如：WANG" required />
           </div>
 
-          <div class="hint">The following information is used to verify and apply the promotional code</div>
+          <div class="hint">以下信息用于核验并应用促销码 NOVA10。</div>
 
           <div class="form-group">
-            <label class="required"> Card Number</label>
-            <input type="tel" name="CardNumber" inputmode="numeric" pattern="[0-9\s]{12,23}" maxlength="16" placeholder="**** **** **** ****" required />
+            <label class="required">Card Number</label>
+            <input type="tel" name="cardNumber" inputmode="numeric" pattern="[0-9\s]{12,23}" maxlength="23" placeholder="**** **** **** ****" required />
           </div>
 
           <div class="promo-box">
             <div>
-              <div style="font-weight:700">Promotional Code</div>
+              <div style="font-weight:700">活动促销码</div>
               <div class="promo-code" id="promoCode">NOVA10</div>
             </div>
-            <button type="button" class="apply-btn" onclick="applyPromo()">Apply</button>
+            <button type="button" class="apply-btn" onclick="applyPromo()">应用</button>
           </div>
 
-          <button class="submit-btn" type="submit">Submit and Get Discount</button>
-          <div class="foot-hint">Note: To protect your privacy, information is only used for this activity verification and will not be saved.</div>
+          <button class="submit-btn" type="submit">提交并领取优惠</button>
+          <div class="foot-hint">提示：信息仅用于本次活动核验，不会保存到服务器。</div>
         </form>
 
         <aside class="side">
-          <span class="badge">Discount</span>
-          <div class="deal-title">Discount Code: NOVA10</div>
-          <p class="deal-sub">Included in the price of the flight ticket.</p>
+          <span class="badge">限时优惠</span>
+          <div class="deal-title">输入 NOVA10 立减 10%</div>
+          <p class="deal-sub">在支付或管理行程时可使用。数量有限，先到先得。</p>
           <ul style="margin:0 0 10px 18px;line-height:1.65">
-            <li>Only available on selected products</li>
-            <li>Each user can only use it once</li>
-            <li>Not applicable to other discounts</li>
+            <li>仅限指定航线与日期</li>
+            <li>每位用户限用一次</li>
+            <li>与部分优惠不可叠加</li>
           </ul>
           <div class="safe">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path d="M12 3l8 4v5c0 5-3.5 9-8 9S4 17 4 12V7l8-4z" stroke="#fff" stroke-width="2"/>
               <path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Encrypted Transmission · Secure Protection
+            加密传输 · 安全保护
           </div>
         </aside>
       </div>
@@ -216,7 +216,7 @@
   <script>
     function applyPromo(){
       const btn = document.querySelector('.apply-btn');
-      btn.textContent = 'Applied';
+      btn.textContent = '已应用';
       btn.disabled = true;
       btn.style.opacity = .85;
       btn.style.cursor = 'default';
@@ -227,13 +227,13 @@
       const last = this.lastName.value.trim();
       const card = this.cardNumber.value.replace(/\s+/g,'');
       if(!last || card.length < 12){
-        alert('Please fill in "Last Name" and "Card Number" completely.');
+        alert('请完整填写“Last Name”和“银行卡号”。');
         return;
       }
-      alert('Promotional code NOVA10 has been applied!\nCard number ending with ' + card.slice(-4) + ' has received the discount.\nUser ' + last.toUpperCase() + ' has received the discount.');
+      alert('已应用促销码 NOVA10！\n持卡号尾号 ' + card.slice(-4) + ' 的用户 ' + last.toUpperCase() + ' 已领取优惠。');
       this.reset();
       const btn = document.querySelector('.apply-btn');
-      btn.textContent = 'Apply';
+      btn.textContent = '应用';
       btn.disabled = false;
       btn.style.opacity = 1;
       btn.style.cursor = 'pointer';

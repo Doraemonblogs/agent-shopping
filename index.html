@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nova Shop — 交互式购物网站 Demo</title>
+  <title>Nova Shop</title>
   <style>
     :root{
       --bg:#f6f7fb;--card:#ffffff;--text:#0b1220;--muted:#6b7280;--accent:#4f46e5;--accent-2:#22c55e;--danger:#ef4444;--border:#e5e7eb;--chip:#eef2ff;--shadow:0 10px 25px rgba(0,0,0,.08);
@@ -283,25 +283,37 @@
           <div>活动倒计时：<span id="promoTimer" class="timer">00:23:59</span></div>
         </div>
         <div class="welcome-info">
-          <div class="coupon-box">
+          <!-- <div class="coupon-box">
             <div>
               <div class="muted" style="font-size:12px">优惠码</div>
               <div class="coupon-code" id="promoCode">NOVA10</div>
             </div>
             <button id="copyPromo" class="btn">复制</button>
-          </div>
+          </div> -->
           <ul class="muted" style="margin:0 0 6px 0;padding-left:18px">
             <li>适用于参与活动的商品，部分特殊商品除外</li>
             <li>每个账户限用一次，和其他活动不可叠加</li>
           </ul>
-          <div class="welcome-actions">
+          <div class="link-section" style="padding:0 16px 16px;">
+            <a
+              id="goToDeals"
+              class="btn primary"
+              href="https://shopping-gamma-two.vercel.app/intro"
+              style="display:block;text-align:center;"
+            >前往活动页面</a>
+            <label style="display:flex;gap:8px;align-items:center;margin-top:10px;">
+              <input type="checkbox" id="dontShow7" />
+              <span class="muted">7 天内不再显示</span>
+            </label>
+          </div>
+          <!-- <div class="welcome-actions">
             <button id="useNow" class="btn primary">立即使用</button>
             <button id="seeDeals" class="btn link">看看有哪些好物</button>
-          </div>
-          <label style="display:flex;gap:8px;align-items:center;margin-top:2px">
+          </div> -->
+          <!-- <label style="display:flex;gap:8px;align-items:center;margin-top:2px">
             <input type="checkbox" id="dontShow7" />
             <span class="muted">7 天内不再显示</span>
-          </label>
+          </label> -->
         </div>
       </div>
     </div>
@@ -531,32 +543,32 @@
   window.addEventListener('keydown', e=>{ if(modal.classList.contains('open') && e.key==='Escape') closeWelcome() });
 
   // 复制优惠码
-  copyBtn.addEventListener('click', async ()=>{
-    try{
-      await navigator.clipboard.writeText(CODE);
-      toast('优惠码已复制：'+CODE);
-      document.getElementById('coupon').value = CODE; // 顺手填入购物车输入框
-    }catch{
-      toast('复制失败，请手动输入');
-    }
-  });
+  // copyBtn.addEventListener('click', async ()=>{
+  //   try{
+  //     await navigator.clipboard.writeText(CODE);
+  //     toast('优惠码已复制：'+CODE);
+  //     document.getElementById('coupon').value = CODE; // 顺手填入购物车输入框
+  //   }catch{
+  //     toast('复制失败，请手动输入');
+  //   }
+  // });
 
   // 立即使用：打开购物车并自动应用（与现有逻辑一致）
-  useNow.addEventListener('click', ()=>{
-    document.getElementById('coupon').value = CODE;
-    document.getElementById('applyCoupon').click();
-    document.getElementById('openCart').click();
-    closeWelcome();
-  });
+  // useNow.addEventListener('click', ()=>{
+  //   document.getElementById('coupon').value = CODE;
+  //   document.getElementById('applyCoupon').click();
+  //   document.getElementById('openCart').click();
+  //   closeWelcome();
+  // });
 
   // 查看好物：跳转至“推荐”并滚动到商品区
-  seeDeals.addEventListener('click', ()=>{
-    state.sort = 'featured';
-    document.getElementById('sort').value = 'featured';
-    render();
-    document.getElementById('products').scrollIntoView({behavior:'smooth', block:'start'});
-    closeWelcome();
-  });
+  // seeDeals.addEventListener('click', ()=>{
+  //   state.sort = 'featured';
+  //   document.getElementById('sort').value = 'featured';
+  //   render();
+  //   document.getElementById('products').scrollIntoView({behavior:'smooth', block:'start'});
+  //   closeWelcome();
+  // });
 
   // 首访控制：仅在未设置隐藏或已过期时显示
   const hideUntil = load('welcome_hide_until', 0);
