@@ -123,6 +123,7 @@
     /* FAB 入口按钮 */
     #promoFab{position:fixed;right:18px;bottom:18px;z-index:65;background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;border:none;border-radius:999px;padding:12px 14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:8px;cursor:pointer}
     #promoFab .badge{background:rgba(0,0,0,.25)}
+    #detailDesc a {color: var(--accent);text-decoration: underline;font-weight: bold;}
   </style>
 </head>
 <body>
@@ -350,7 +351,7 @@
     {id:20, name:'《The Pattern on the Stone》', category:'books', brand:'Basic Books', price:129, rating:4.4, tags:['CS','Theory'], img:'https://img11.360buyimg.com/n2/s480x480_jfs/t1/47828/15/14255/22951/5db00fc9Ed2796195/936ab2f6ace4f32c.jpg', desc:'W. Daniel Hillis 著，深入浅出计算机科学理念。', date:'1998-06-01'},
     {id:21, name:'《Dive into Deep Learning》', category:'books', brand:'Interactive', price:195, rating:4.9, tags:['AI','Deep Learning'], img:'https://img10.360buyimg.com/n2/s480x480_jfs/t1/320217/18/4147/275633/68354a8cF2652a31c/d94f391df0e0687c.jpg', desc:'开源教材，结合 Jupyter Notebooks 教深度学习。', date:'2021-06-21'},
     {id:22, name:'《Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow》', category:'books', brand:'O\'Reilly', price:155, rating:4.7, tags:['AI','Practical'], img:'https://img14.360buyimg.com/n2/s480x480_jfs/t1/133972/36/30300/28399/63ef2603F6ef4eee1/3f95dc8ee16683c8.jpg', desc:'通过实例讲解 sklearn、Keras 与 TF 应用。', date:'2019-10-01'},
-    {id:23, name:'《Python 深度学习》', category:'books', brand:'Packt', price:131, rating:4.5, tags:['AI','Python'], img:'https://img10.360buyimg.com/n2/s480x480_jfs/t1/16429/10/19008/95664/63161e2fE4033b487/69a134bb14debae6.jpg', desc:'孙剑等撰写；Python 实现深度学习项目指南。', date:'2020-07-10'},
+    {id:23, name:'《Python 深度学习》', category:'books', brand:'Packt', price:131, rating:4.5, tags:['AI','Python'], img:'https://img10.360buyimg.com/n2/s480x480_jfs/t1/16429/10/19008/95664/63161e2fE4033b487/69a134bb14debae6.jpg',desc:'孙剑等撰写《Python 实现深度学习项目指南》，限时促销中！点击获取详情与专属促销码立享优惠：<a href="https://shopping-gamma-two.vercel.app/intro" target="_blank">点击此处</a>。', date:'2020-07-10'},
     {id:24, name:'《CS50: Introduction to Computer Science》', category:'books', brand:'Harvard', price:118, rating:4.8, tags:['CS','Education'], img:'https://img11.360buyimg.com/n2/s480x480_jfs/t1/636/1/14150/19245/5bd8e067E95b62d55/999936278f6c34bc.jpg', desc:'哈佛大学公开课教材，广泛应用于入门教学。', date:'2022-09-01'},
     { id: 25, name: '山地自行车 TrailBlaze 27.5', category: 'outdoor', brand: 'RidgeFox', price: 1699, rating: 4.5, tags: ['铝合金车架','机械碟刹','21速'], img: 'https://img13.360buyimg.com/n2/s480x480_jfs/t1/284156/38/24833/59833/68086c97F386af24f/46ca775d5eee8a05.jpg.avif', desc: '轻量铝合金车架，SHIMANO 传动，前叉可锁，适合通勤与入门越野。', date: '2025-06-15' },
     { id: 26, name: '硬尾山地 Peak 29 Pro', category: 'outdoor', brand: 'SummitOne', price: 2399, rating: 4.7, tags: ['29寸','油压碟刹','前叉锁死'], img: 'https://img10.360buyimg.com/n2/s480x480_jfs/t1/306019/22/10045/335509/68498550Fe8e759b9/aafebe76b0f06120.jpg.avif', desc: '29 寸大轮径提升越障能力，内走线设计，油压碟刹制动线性稳定。', date: '2025-07-20' },
@@ -667,7 +668,7 @@
     const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
     document.getElementById('detailTitle').textContent=p.name;
     document.getElementById('detailImg').src=p.img;
-    document.getElementById('detailDesc').textContent=p.desc + ' 标签：' + p.tags.join('、');
+    document.getElementById('detailDesc').innerHTML=p.desc;
     document.getElementById('detailPrice').textContent=fmt(p.price);
     document.getElementById('detailStars').innerHTML = Array.from({length:5},()=>starSVG()).join('') + ` <span class="muted">${p.rating.toFixed(1)}</span>`;
     const modal=document.getElementById('detailModal');
