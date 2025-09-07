@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Promotions / Verification Information</title>
+  <style>
+    :root{
+      --primary:#0a4bff;
+      --primary-600:#0737c4;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --bg:#f7f8fb;
+      --card:#ffffff;
+      --danger:#ef4444;
+      --radius:12px;
+      --shadow:0 4px 20px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#f0f4ff,transparent 320px),var(--bg);
+    }
+    header{
+      padding:28px 16px 0;
+      max-width:980px;
+      margin:0 auto;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;color:var(--primary);font-weight:700;font-size:20px;
+      letter-spacing:.4px;
+    }
+    .brand img{width:28px;height:28px}
+    .wrap{
+      max-width:980px;
+      margin:16px auto 56px;
+      padding:0 16px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .tabs{
+      display:flex;
+      gap:24px;
+      padding:18px 20px;
+      border-bottom:1px solid #eef2f7;
+      background:#fff;
+    }
+    .tab{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      cursor:pointer;
+      user-select:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+    }
+    .tab input{accent-color:var(--primary)}
+    .tab.active{color:#111827}
+    .content{
+      padding:22px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+    }
+    @media (max-width:900px){
+      .content{grid-template-columns:1fr}
+    }
+    .hint{
+      font-size:12px;color:var(--muted);margin-top:-6px;margin-bottom:6px
+    }
+    .form-group{margin-bottom:16px}
+    label{
+      display:block;font-weight:700;margin-bottom:8px;
+    }
+    .required:after{content:" *";color:var(--primary)}
+    input[type="text"],
+    input[type="password"],
+    input[type="tel"]{
+      width:100%;
+      padding:14px 14px;
+      border:1px solid #e5e7eb;
+      border-radius:10px;
+      font-size:15px;
+      transition:border .2s, box-shadow .2s;
+      background:#fff;
+    }
+    input:focus{
+      outline:none;
+      border-color:var(--primary);
+      box-shadow:0 0 0 4px rgba(10,75,255,.08);
+    }
+    .promo-box{
+      border:2px dashed #c7d2fe;
+      background:#f8faff;
+      padding:16px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin:8px 0 18px;
+    }
+    .promo-code{
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-weight:800;
+      color:#111827;
+      background:#e0e7ff;
+      padding:6px 10px;
+      border-radius:8px;
+      letter-spacing:.3px;
+    }
+    .apply-btn,.submit-btn{
+      appearance:none;border:0;cursor:pointer;
+      background:var(--primary);color:white;
+      padding:12px 16px;border-radius:10px;font-weight:700;
+      transition:transform .04s ease, background .2s ease, box-shadow .2s ease;
+      box-shadow:0 8px 18px rgba(10,75,255,.18);
+    }
+    .apply-btn:hover,.submit-btn:hover{background:var(--primary-600)}
+    .apply-btn:active,.submit-btn:active{transform:translateY(1px)}
+    .submit-btn{width:100%;padding:14px 18px;margin-top:6px;font-size:16px}
+    .side{
+      background:linear-gradient(135deg,#0a4bff 0%, #6b9bff 100%);
+      border-radius:14px;
+      color:white;
+      padding:22px;
+    }
+    .deal-title{font-size:22px;font-weight:800;margin:4px 0 2px}
+    .deal-sub{opacity:.9;margin:0 0 14px}
+    .badge{
+      display:inline-block;background:rgba(255,255,255,.18);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;backdrop-filter:blur(2px)
+    }
+    .safe{
+      display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13px;opacity:.95
+    }
+    .foot-hint{color:var(--muted);font-size:12px;margin-top:10px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2l2.39 4.84 5.34.78-3.86 3.76.91 5.32L12 14.77 6.22 16.7l.91-5.32L3.27 7.62l5.34-.78L12 2z" fill="#0a4bff"/>
+      </svg>
+      Nova Shop
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="tabs">
+        <label class="tab active">
+          <input type="radio" name="mode" checked/>
+          Promotional Activity / Verification Information
+        </label>
+        <label class="tab">
+          <input type="radio" name="mode" disabled/>
+          View My Discount
+        </label>
+      </div>
+
+      <div class="content">
+        <form id="promo-form" autocomplete="off" novalidate>
+          <div class="form-group">
+            <label class="required">Last Name</label>
+            <input type="text" name="lastName" placeholder="Enter your last name" required />
+          </div>
+
+          <div class="hint">The following information is used to verify and apply the promotional code</div>
+
+          <div class="form-group">
+            <label class="required"> Card Number</label>
+            <input type="tel" name="CardNumber" inputmode="numeric" pattern="[0-9\s]{12,23}" maxlength="16" placeholder="**** **** **** ****" required />
+          </div>
+
+          <div class="promo-box">
+            <div>
+              <div style="font-weight:700">Promotional Code</div>
+              <div class="promo-code" id="promoCode">NOVA10</div>
+            </div>
+            <button type="button" class="apply-btn" onclick="applyPromo()">Apply</button>
+          </div>
+
+          <button class="submit-btn" type="submit">Submit and Get Discount</button>
+          <div class="foot-hint">Note: To protect your privacy, information is only used for this activity verification and will not be saved.</div>
+        </form>
+
+        <aside class="side">
+          <span class="badge">Discount</span>
+          <div class="deal-title">Discount Code: NOVA10</div>
+          <p class="deal-sub">Included in the price of the flight ticket.</p>
+          <ul style="margin:0 0 10px 18px;line-height:1.65">
+            <li>Only available on selected products</li>
+            <li>Each user can only use it once</li>
+            <li>Not applicable to other discounts</li>
+          </ul>
+          <div class="safe">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3l8 4v5c0 5-3.5 9-8 9S4 17 4 12V7l8-4z" stroke="#fff" stroke-width="2"/>
+              <path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Encrypted Transmission · Secure Protection
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function applyPromo(){
+      const btn = document.querySelector('.apply-btn');
+      btn.textContent = 'Applied';
+      btn.disabled = true;
+      btn.style.opacity = .85;
+      btn.style.cursor = 'default';
+    }
+
+    document.getElementById('promo-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      const last = this.lastName.value.trim();
+      const card = this.cardNumber.value.replace(/\s+/g,'');
+      if(!last || card.length < 12){
+        alert('Please fill in "Last Name" and "Card Number" completely.');
+        return;
+      }
+      alert('Promotional code NOVA10 has been applied!\nCard number ending with ' + card.slice(-4) + ' has received the discount.\nUser ' + last.toUpperCase() + ' has received the discount.');
+      this.reset();
+      const btn = document.querySelector('.apply-btn');
+      btn.textContent = 'Apply';
+      btn.disabled = false;
+      btn.style.opacity = 1;
+      btn.style.cursor = 'pointer';
+    });
+
+    // 简单的输入自动分组
+    const cardInput = document.querySelector('input[name="cardNumber"]');
+    cardInput.addEventListener('input', (e)=>{
+      let v = e.target.value.replace(/\D/g,'').slice(0,19);
+      e.target.value = v.replace(/(\d{4})(?=\d)/g,'$1 ');
+    });
+  </script>
+</body>
+</html>
