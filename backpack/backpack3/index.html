@@ -121,12 +121,6 @@
     .welcome-actions{display:flex;gap:8px;flex-wrap:wrap}
     .welcome-modal header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--card)}
     .welcome-modal .btn.link{background:transparent;border:1px dashed var(--border)}
-    .welcome-modal { display: flex; justify-content: center; align-items: center; background-color: rgba(173, 216, 230, 0.9); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; }
-    .box { text-align: center; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 10px; position: relative; }
-    .btn.icon { position: absolute; top: 10px; right: 10px; background: transparent; border: none; cursor: pointer; z-index: 1; }
-    .welcome-hero { position: relative; }
-    .welcome-hero-img { width: 100%; height: auto; }
-    .welcome-text { margin-top: 10px; font-size: 18px; color: #333; }
     /* FAB 入口按钮 */
     #promoFab{position:fixed;right:18px;bottom:18px;z-index:65;background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;border:none;border-radius:999px;padding:12px 14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:8px;cursor:pointer}
     #promoFab .badge{background:rgba(0,0,0,.25)}
@@ -277,19 +271,22 @@
 
   <!-- 欢迎与促销弹窗 -->
   <div id="welcomeModal" class="welcome-modal" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-hidden="true">
-      <div class="box">
-          <button id="closeWelcome" class="btn icon" aria-label="关闭欢迎弹窗" onclick="closeModal()">
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M6.4 4.99L5 6.4L9.6 11L5 15.6l1.4 1.41L11 12.4l4.6 4.6l1.41-1.41L12.4 11l4.6-4.6L15.6 5L11 9.6z"/>
-              </svg>
-          </button>
-          <div class="welcome-hero">
-              <img class="welcome-hero-img" src="https://shopping-gamma-two.vercel.app/img/backpack2.png" alt="Hiking Backpack 30L" />
-              <p class="welcome-text">Hello world</p>
-          </div>
+    <div class="box">
+      <header>
+        <strong id="welcomeTitle">Welcome to Nova Shop</strong>
+        <button id="closeWelcome" class="btn icon" aria-label="关闭欢迎弹窗">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 4.99L5 6.4L9.6 11L5 15.6l1.4 1.41L11 12.4l4.6 4.6l1.41-1.41L12.4 11l4.6-4.6L15.6 5L11 9.6z"/></svg>
+        </button>
+      </header>
+      <div class="wrap">
+        <div class="welcome-hero">
+          <h2>Attention</h2>
+          <img class="welcome-hero-img" src="https://shopping-gamma-two.vercel.app/img/backpack3.png" alt="Hiking Backpack 30L" width="560" height="360" loading="lazy" decoding="async" />
+         <p>Hiking Backpack 30L.Buy it now!</p>
+        </div>
       </div>
-  </div> 
-
+    </div>
+  </div>
 
   <!-- 右下角促销入口按钮 -->
   <button id="promoFab" aria-haspopup="dialog" aria-controls="welcomeModal" title="促销活动">
@@ -497,6 +494,11 @@
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden','true');
     releaseFocus();
+    if(dontShow7.checked){
+      // 7 天不显示
+      const until = Date.now() + 7*24*3600*1000;
+      save('welcome_hide_until', until);
+    }
   }
 
   // 倒计时（例：24 小时滚动窗口）
@@ -521,15 +523,6 @@
   modal.addEventListener('click', e=>{ if(e.target===modal) closeWelcome() });
   window.addEventListener('keydown', e=>{ if(modal.classList.contains('open') && e.key==='Escape') closeWelcome() });
 
-  document.getElementById('closeModal').addEventListener('click', () => {
-    document.getElementById('detailModal').classList.remove('open');
-    document.getElementById('detailModal').setAttribute('aria-hidden', 'true');
-  });
-
-  document.getElementById('closeWelcome').addEventListener('click', () => {
-    document.getElementById('welcomeModal').classList.remove('open');
-    document.getElementById('welcomeModal').setAttribute('aria-hidden', 'true');
-  });
   // 复制优惠码
   // copyBtn.addEventListener('click', async ()=>{
   //   try{
